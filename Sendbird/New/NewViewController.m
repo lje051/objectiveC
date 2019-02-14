@@ -8,6 +8,8 @@
 #import "Book.h"
 #import "NewViewController.h"
 #import "DetailViewController.h"
+#import "UIImageView+WebCache.h"
+#import "UIView+WebCacheOperation.h"
 
 @interface NewViewController ()<UICollectionViewDelegate
 ,UICollectionViewDataSource>
@@ -156,11 +158,15 @@
   isbn13Lb.text = book.isbn13;
   priceLb.text = book.price;
   
-  NSString *encodeUrl = [book.image stringByRemovingPercentEncoding];
- 
-  NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: encodeUrl]];
-  imgView.image = [UIImage imageWithData: imageData];
+  NSString *encodeUrl = [book.image stringByRemovingPercentEncoding]; 
   
+  [imgView sd_setImageWithURL:[NSURL URLWithString:encodeUrl]
+             placeholderImage:nil
+                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                      if (error) {
+                        NSLog(@"Error occured : %@", [error description]);
+                      }
+                    }];
 
   return cell;
   

@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sendbird/Search/SearchViewController.m"
-            timestampString = "571827975.352828"
+            timestampString = "571836547.377306"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "-searchBarSearchButtonClicked:"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sendbird/Search/SearchViewController.m"
-            timestampString = "571827975.353413"
+            timestampString = "571836547.377372"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "-fetchBookSearchList:withKeyword:callback:"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sendbird/Search/SearchViewController.m"
-            timestampString = "571827975.3537951"
+            timestampString = "571836547.377423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "-fetchBookSearchList:withKeyword:callback:"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,45 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sendbird/Search/SearchViewController.m"
-            timestampString = "571827975.354156"
+            timestampString = "571836547.3774689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "-searchBarSearchButtonClicked:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__53-[SearchViewController searchBarSearchButtonClicked:]_block_invoke_2"
-                  moduleName = "Sendbird"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Jeeeunlim/projects/Sendbird/Sendbird/Search/SearchViewController.m"
-                  timestampString = "571828000.546506"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "204"
-                  endingLineNumber = "204"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.174"
-                  moduleName = "Sendbird"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Jeeeunlim/projects/Sendbird/Sendbird/Search/SearchViewController.m"
-                  timestampString = "571828000.5494159"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "201"
-                  endingLineNumber = "201"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "SearchViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -106,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sendbird/Search/SearchViewController.m"
-            timestampString = "571827975.354506"
+            timestampString = "571836547.377525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "-fetchBookSearchList:withKeyword:callback:"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,43 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sendbird/Search/SearchViewController.m"
-            timestampString = "571827975.354977"
+            timestampString = "571836547.3775719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sendbird/Search/SearchViewController.m"
-            timestampString = "571827975.355249"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "-collectionView:cellForItemAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sendbird/Search/SearchViewController.m"
-            timestampString = "571827999.521365"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "-fetchBookSearchList:withKeyword:callback:"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,60 +106,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sendbird/Search/SearchViewController.m"
-            timestampString = "571828001.2658139"
+            timestampString = "571836547.377618"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "-fetchBookSearchList:withKeyword:callback:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SearchViewController fetchBookSearchList:withKeyword:callback:]"
-                  moduleName = "Sendbird"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Jeeeunlim/projects/Sendbird/Sendbird/Search/SearchViewController.m"
-                  timestampString = "571828001.595965"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "100">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__Block_byref_object_copy_"
-                  moduleName = "Sendbird"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Jeeeunlim/projects/Sendbird/Sendbird/Search/SearchViewController.m"
-                  timestampString = "571828001.5983011"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__Block_byref_object_dispose_"
-                  moduleName = "Sendbird"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Jeeeunlim/projects/Sendbird/Sendbird/Search/SearchViewController.m"
-                  timestampString = "571828001.601247"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sendbird/Search/DetailViewController.m"
+            timestampString = "571836547.377667"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "-fetchBookDetail:withISBN:callback:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sendbird/Search/DetailViewController.m"
+            timestampString = "571836547.378027"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

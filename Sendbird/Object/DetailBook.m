@@ -29,12 +29,18 @@
   self.language     = nil;
   self.publisher     = nil;
   self.error   = nil;
-  
+  self.title     = nil;
+  self.price     = nil;
+  self.subtitle     = nil;
+  self.image     = nil;
+  self.url     = nil;
+  self.isbn13   = nil;
   
 }
 
 + (DetailBook *)objectWithJSON:(NSDictionary *)dict
 {
+  
   return [[DetailBook alloc] initWithJSON:dict];
 }
 
@@ -43,7 +49,12 @@
   self = [super init];
   if(self) {
     
-    
+    self.title    = [dict objectForKey:@"title"];
+    self.price    = [dict objectForKey:@"price"];
+    self.subtitle    = [dict objectForKey:@"subtitle"];
+    self.image    = [dict objectForKey:@"image"];
+    self.url    = [dict objectForKey:@"url"];
+    self.isbn13  = [dict objectForKey:@"isbn13"];
     self.authors    = [dict objectForKey:@"authors"];
     self.isbn10    = [dict objectForKey:@"isbn10"];
     self.pages    = [dict objectForKey:@"pages"];

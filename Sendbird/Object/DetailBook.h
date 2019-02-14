@@ -10,8 +10,13 @@
 #import "Book.h"
 
 
-@interface DetailBook : Book
-
+@interface DetailBook : NSObject
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *price;
+@property (nonatomic, retain) NSString *subtitle;
+@property (nonatomic, retain) NSString *image;
+@property (nonatomic, retain) NSString *url;
+@property (nonatomic, retain) NSString *isbn13;
 @property (nonatomic, retain) NSString *authors;
 @property (nonatomic, retain) NSString *isbn10;
 @property (nonatomic, retain) NSString *pages;
