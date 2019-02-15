@@ -10,6 +10,25 @@
 
 @implementation jeeUtil
 
++ (void)writeDataToFile:(NSString *)fileName withData:(NSData *)data
+{
+  NSString *path = [jeeUtil documentPath:fileName];
+  
+  // 폴더가 없다면 폴더 생성.
+  if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+    [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
+  }
+  
+  [data writeToFile:path atomically:YES];
+}
++ (NSString *)documentPath:(NSString *)fname {
+  return [[jeeUtil documentDir] stringByAppendingPathComponent:fname];
+}
+
++ (NSString *)documentDir {
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  return [paths objectAtIndex:0];
+}
 //array를 json string으로 컨버팅
 + (NSString *)convertArray2JsonStr:(NSMutableArray *)arr
 {
@@ -32,6 +51,80 @@
                                                           error:&error];
   return arr;
 }
++ (void)addObserver:(id)observer selector:(SEL)sel message:(NSString *)msg
+{
+  [[NSNotificationCenter defaultCenter] addObserver:observer selector:sel name:msg object:nil];
+}
+
++ (void)removeObserver:(id)observer message:(NSString *)msg
+{
+  [[NSNotificationCenter defaultCenter] removeObserver:observer name:msg object:nil];
+}
+
+
+//
+// postMessage
+//
++ (void)postMessage:(id)sender message:(NSString *)aName msgID:(UInt16)msgID
+{
+  NSLog(@"\n-----------------------------------------------\n\
+        TUtil::postMessage(3) \naName:%@ \nmsgID:%d\
+        \n-----------------------------------------------\n", aName, msgID);
+  
+  NSString *theMsg = [NSString stringWithFormat:@"%d", msgID];
+  NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:theMsg, @"msgID", nil];
+  if(dictionary) {
+    NSNotification *notification = [NSNotification notificationWithName:aName object:sender userInfo:dictionary];
+    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:notification waitUntilDone:NO];
+  }
+}
+
++ (void)postMessage:(id)sender message:(NSString *)aName msgID:(UInt16)msgID param1:(id)param1
+{
+  NSLog(@"\n-----------------------------------------------\n\
+        TUtil::postMessage(4) \naName:%@ \nmsgID:%d \nparam1:%@\
+        \n-----------------------------------------------\n", aName, msgID, param1);
+  
+  NSString *theMsg = [NSString stringWithFormat:@"%d", msgID];
+  NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:theMsg, @"msgID", param1, @"param1", nil];
+  if(dictionary) {
+    NSNotification *notification = [NSNotification notificationWithName:aName object:sender userInfo:dictionary];
+    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:notification waitUntilDone:NO];
+  }
+}
+
++ (void)postMessage:(id)sender message:(NSString *)aName msgID:(UInt16)msgID param1:(id)param1 param2:(id)param2
+{
+  NSLog(@"\n-----------------------------------------------\n\
+        TUtil::postMessage(5) \naName:%@ \nmsgID:%d \nparam1:%@ \nparam2:%@\
+        \n-----------------------------------------------\n", aName, msgID, param1, param2);
+  
+  NSString *theMsg = [NSString stringWithFormat:@"%d", msgID];
+  NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:theMsg, @"msgID", param1, @"param1", param2, @"param2", nil];
+  if(dictionary) {
+    NSNotification *notification = [NSNotification notificationWithName:aName object:sender userInfo:dictionary];
+    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:notification waitUntilDone:NO];
+  }
+}
+
++ (void)postMessage:(id)sender message:(NSString *)aName msgID:(UInt16)msgID param1:(id)param1 param2:(id)param2 param3:(id)param3
+{
+  NSLog(@"\n-----------------------------------------------\n\
+        TUtil::postMessage(6) \naName:%@ \nmsgID:%d \nparam1:%@ \nparam2:%@ \nparam3:%@\
+        \n-----------------------------------------------\n", aName, msgID, param1, param2, param3);
+  
+  NSString *theMsg = [NSString stringWithFormat:@"%d", msgID];
+  NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:theMsg, @"msgID",
+                              param1, @"param1",
+                              param2, @"param2",
+                              param3, @"param3",
+                              nil];
+  if(dictionary) {
+    NSNotification *notification = [NSNotification notificationWithName:aName object:sender userInfo:dictionary];
+    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:notification waitUntilDone:NO];
+  }
+}
+
 
 
 @end

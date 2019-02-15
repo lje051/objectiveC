@@ -14,5 +14,6 @@
 @interface Preference : NSObject
 @property (nonatomic, retain) NSMutableArray *favoriteArr;
 @property (nonatomic, retain) NSMutableArray *historyArr;
++ (Preference*)Instance;
 @end
 

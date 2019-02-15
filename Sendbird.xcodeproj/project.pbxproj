@@ -22,11 +22,13 @@
 		4EC973B12212D184004CEF50 /* BookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC973B02212D184004CEF50 /* BookmarkViewController.m */; };
 		4EC973B42212D1C7004CEF50 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC973B32212D1C7004CEF50 /* NewViewController.m */; };
 		4EC973B72212D1F1004CEF50 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC973B62212D1F1004CEF50 /* SearchViewController.m */; };
+		4EF0E3982216ABA000269CEB /* TabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0E3972216ABA000269CEB /* TabbarViewController.m */; };
 		990F21DF6B656267E79CEE3D /* libPods-Sendbird.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B346E71F9EF3FB5708F06C4 /* libPods-Sendbird.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4B346E71F9EF3FB5708F06C4 /* libPods-Sendbird.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sendbird.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E32B266221674F800524400 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		4E6F133E22156B8200DB2929 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
 		4E6F13412215858100DB2929 /* Preference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Preference.h; sourceTree = "<group>"; };
 		4E6F13422215858100DB2929 /* Preference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Preference.m; sourceTree = "<group>"; };
@@ -54,6 +56,8 @@
 		4EC973B32212D1C7004CEF50 /* NewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 		4EC973B52212D1F1004CEF50 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		4EC973B62212D1F1004CEF50 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		4EF0E3962216ABA000269CEB /* TabbarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabbarViewController.h; sourceTree = "<group>"; };
+		4EF0E3972216ABA000269CEB /* TabbarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabbarViewController.m; sourceTree = "<group>"; };
 		C72FDA2308CD4BEEC8B61CF8 /* Pods-Sendbird.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sendbird.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sendbird/Pods-Sendbird.debug.xcconfig"; sourceTree = "<group>"; };
 		D1BEB1F91427AB508A3FE83F /* Pods-Sendbird.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sendbird.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sendbird/Pods-Sendbird.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +103,7 @@
 		4EC9738A221246BC004CEF50 = {
 			isa = PBXGroup;
 			children = (
+				4E32B266221674F800524400 /* PrefixHeader.pch */,
 				4EC97395221246BC004CEF50 /* Sendbird */,
 				4EC97394221246BC004CEF50 /* Products */,
 				115B13E2C7372FFCC5E65736 /* Pods */,
@@ -131,6 +136,8 @@
 				4EC973A1221246BE004CEF50 /* LaunchScreen.storyboard */,
 				4EC973A4221246BE004CEF50 /* Info.plist */,
 				4EC973A5221246BE004CEF50 /* main.m */,
+				4EF0E3962216ABA000269CEB /* TabbarViewController.h */,
+				4EF0E3972216ABA000269CEB /* TabbarViewController.m */,
 			);
 			path = Sendbird;
 			sourceTree = "<group>";
@@ -295,6 +302,7 @@
 				4E93B76E22154E040003ADAC /* DetailBook.m in Sources */,
 				4E93B76B22154DA20003ADAC /* DetailViewController.m in Sources */,
 				4EC97398221246BC004CEF50 /* AppDelegate.m in Sources */,
+				4EF0E3982216ABA000269CEB /* TabbarViewController.m in Sources */,
 				4EC973AE2212D14D004CEF50 /* HistoryViewController.m in Sources */,
 				4EA4931822140F87004ACBBE /* Book.m in Sources */,
 				4EC973B72212D1F1004CEF50 /* SearchViewController.m in Sources */,
@@ -442,6 +450,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HSA7DFUXTK;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = Sendbird/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -460,6 +471,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HSA7DFUXTK;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = Sendbird/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

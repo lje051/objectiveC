@@ -11,6 +11,7 @@
 
 
 @interface DetailBook : NSObject
+@property (assign, nonatomic) BOOL like;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *price;
 @property (nonatomic, retain) NSString *subtitle;

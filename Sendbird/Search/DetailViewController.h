@@ -5,8 +5,18 @@
 //  Created by Jeeeun Lim on 14/02/2019.
 //  Copyright © 2019 jeeeun. All rights reserved.
 //
-
+#import "BookmarkViewController.h"
+#import "HistoryViewController.h"
+#import "DetailBook.h"
 #import <UIKit/UIKit.h>
+
+@protocol DetailViewDelegate<NSObject>
+@optional
+
+- (void)removeFavoriteArr:(DetailBook *)selectedBook;
+- (void)addFavoriteArr:(DetailBook *)selectedBook;
+- (void)addHistoryArr:(DetailBook *)selectedBook;
+@end
 
 
 @interface DetailViewController : UIViewController
@@ -26,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *ratingLb;
 @property (weak, nonatomic) IBOutlet UILabel *isbn10Lb;
 @property (weak, nonatomic) IBOutlet UILabel *urlLb;
+@property (nonatomic, assign) id<DetailViewDelegate> delegate;
 
 @end
 

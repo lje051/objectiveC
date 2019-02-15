@@ -20,6 +20,7 @@
 
 - (void)dealloc
 {
+  self.like = NO;
   self.authors     = nil;
   self.isbn10     = nil;
   self.pages     = nil;
@@ -48,7 +49,7 @@
 {
   self = [super init];
   if(self) {
-    
+    self.like = NO;
     self.title    = [dict objectForKey:@"title"];
     self.price    = [dict objectForKey:@"price"];
     self.subtitle    = [dict objectForKey:@"subtitle"];
@@ -68,6 +69,8 @@
   
   return self;
 }
+
+
 
 @end
 

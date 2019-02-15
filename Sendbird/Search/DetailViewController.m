@@ -8,20 +8,24 @@
 #import "UIImageView+WebCache.h"
 #import "UIView+WebCacheOperation.h"
 #import "DetailViewController.h"
-#import "DetailBook.h"
+
 @interface DetailViewController ()
 @property (nonatomic) DetailBook* selectedBook;
+@property (nonatomic) NSMutableArray* bookmarkArr;
 @end
 
 @implementation DetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  self.title = @"Book Detail"; self.navigationController.navigationBar.prefersLargeTitles = NO;
+  self.title = @"Book Detail";
+   self.bookmarkArr = [[NSMutableArray alloc]init];
+  self.navigationController.navigationBar.prefersLargeTitles = NO;
   [self fetchBookDetail:@"https://api.itbook.store/1.0/books" withISBN:self.isbn13 callback:^(NSError *error, BOOL success) {
     if (success) {
       dispatch_async(dispatch_get_main_queue(), ^{
-      
+        
+        
         self.titleLb.text = self.selectedBook.title;
          self.priceLb.text = self.selectedBook.price;
          self.subTitleLb.text = self.selectedBook.subtitle;
@@ -29,6 +33,15 @@
          self.authorLb.text = self.selectedBook.authors;
          self.publisherLb.text = self.selectedBook.publisher;
         self.pageLb.text = [NSString stringWithFormat:@"%@pages", self.selectedBook.pages];
+        
+        
+          if(!self.selectedBook.like){
+            [self.likeBtn setTitle:@"click like" forState:UIControlStateNormal];
+            [self.likeBtn addTarget:self action:@selector(askAddFavoriteArr:) forControlEvents: UIControlEventTouchUpInside];
+          }else{
+              [self.likeBtn setTitle:@"liked" forState:UIControlStateNormal];
+            [self.likeBtn addTarget:self action:@selector(askRemoveFavoriteArr:) forControlEvents: UIControlEventTouchUpInside];
+          }
         
         self.languageLb.text = self.selectedBook.language;
         self.yearLb.text = self.selectedBook.year;
@@ -60,6 +73,9 @@
       NSLog(@"%@", error);
     }
   }];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+//  self.bookmarkArr removeAllObjects
 }
 - (void)fetchBookDetail:(NSString*)urlString withISBN:(NSString*)ISBN callback:(void (^)(NSError *error, BOOL success))callback
 {
@@ -105,16 +121,42 @@
     NSLog(@"requestReply: %@", jsonDict);
   }] resume];
 }
+#pragma mark - Action for delegate
 
+- (void)askAddFavoriteArr:(id)sender
+{
 
-/*
-#pragma mark - Navigation
+  //if ([self.delegate respondsToSelector:@selector(addFavoriteArr:withObject:)]) {
+//    self.selectedBook.like = YES;
+//  if ([[Preference Instance].favoriteArr count] > 0){
+//
+//    self.bookmarkArr  = [Preference Instance].favoriteArr;
+//    [self.bookmarkArr addObject:self.selectedBook];
+//      [Preference Instance].favoriteArr = self.bookmarkArr ;
+//  }else{
+//      [self.bookmarkArr addObject:self.selectedBook];
+//   // [Preference Instance].favoriteArr = [[NSMutableArray alloc]init];
+//    [Preference Instance].favoriteArr = self.bookmarkArr ;
+//  }
+//
+//
+//  NSLog(@"%lu", (unsigned long)[[Preference Instance].favoriteArr count]);
+  //  [self.delegate addFavoriteArr:self.selectedBook];
+  
+ // }
+  
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
+- (void)askRemoveFavoriteArr:(id)sender
+{
+//  if ([self.delegate respondsToSelector:@selector(removeFavoriteArr:withObject:)]) {
+    self.selectedBook.like = NO;
+  [[Preference Instance].favoriteArr removeObject:self.selectedBook];
+  NSLog(@"%@", [Preference Instance].favoriteArr);
+    
+ // }
+  
+  
+}
 @end
