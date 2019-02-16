@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9AFB54809238BE4E0868858884609040"
+               BlueprintIdentifier = "5AA5DFD0D84AA4CC6856725D0CB3782D"
                BlueprintName = "Pods-Sendbird"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libPods-Sendbird.a">

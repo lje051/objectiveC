@@ -10,6 +10,7 @@
 		4E6F133F22156B8300DB2929 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E6F133E22156B8200DB2929 /* noimage.png */; };
 		4E6F13432215858100DB2929 /* Preference.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F13422215858100DB2929 /* Preference.m */; };
 		4E6F1347221586A000DB2929 /* jeeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F1346221586A000DB2929 /* jeeUtil.m */; };
+		4E7AC6042217A6B2009C05CA /* RMdetailBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7AC6032217A6B2009C05CA /* RMdetailBook.m */; };
 		4E93B76B22154DA20003ADAC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E93B76A22154DA20003ADAC /* DetailViewController.m */; };
 		4E93B76E22154E040003ADAC /* DetailBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E93B76D22154E040003ADAC /* DetailBook.m */; };
 		4EA4931822140F87004ACBBE /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA4931722140F87004ACBBE /* Book.m */; };
@@ -34,6 +35,8 @@
 		4E6F13422215858100DB2929 /* Preference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Preference.m; sourceTree = "<group>"; };
 		4E6F1345221586A000DB2929 /* jeeUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jeeUtil.h; sourceTree = "<group>"; };
 		4E6F1346221586A000DB2929 /* jeeUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jeeUtil.m; sourceTree = "<group>"; };
+		4E7AC6022217A6B2009C05CA /* RMdetailBook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMdetailBook.h; sourceTree = "<group>"; };
+		4E7AC6032217A6B2009C05CA /* RMdetailBook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMdetailBook.m; sourceTree = "<group>"; };
 		4E93B76922154DA20003ADAC /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		4E93B76A22154DA20003ADAC /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		4E93B76C22154E040003ADAC /* DetailBook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailBook.h; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 				4E93B76D22154E040003ADAC /* DetailBook.m */,
 				4E6F13412215858100DB2929 /* Preference.h */,
 				4E6F13422215858100DB2929 /* Preference.m */,
+				4E7AC6022217A6B2009C05CA /* RMdetailBook.h */,
+				4E7AC6032217A6B2009C05CA /* RMdetailBook.m */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 				4EC973A6221246BE004CEF50 /* main.m in Sources */,
 				4EC973B42212D1C7004CEF50 /* NewViewController.m in Sources */,
 				4E93B76E22154E040003ADAC /* DetailBook.m in Sources */,
+				4E7AC6042217A6B2009C05CA /* RMdetailBook.m in Sources */,
 				4E93B76B22154DA20003ADAC /* DetailViewController.m in Sources */,
 				4EC97398221246BC004CEF50 /* AppDelegate.m in Sources */,
 				4EF0E3982216ABA000269CEB /* TabbarViewController.m in Sources */,

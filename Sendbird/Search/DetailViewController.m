@@ -8,6 +8,7 @@
 #import "UIImageView+WebCache.h"
 #import "UIView+WebCacheOperation.h"
 #import "DetailViewController.h"
+#import <Realm/Realm.h>
 
 @interface DetailViewController ()
 @property (nonatomic) DetailBook* selectedBook;
