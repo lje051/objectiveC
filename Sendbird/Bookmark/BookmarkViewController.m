@@ -39,9 +39,16 @@
     [super viewDidLoad];
   CGRect screenRect = [[UIScreen mainScreen] bounds];
   CGFloat screenWidth = screenRect.size.width;
- 
   self.bookmarkArr = [[NSMutableArray alloc]init];
-   self.bookmarkArr = [Preference Instance].favoriteArr ;
+  //string으로 만들자 짜증나니까 .
+  RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"like = True"];
+  NSMutableArray *array = [NSMutableArray new];
+  for (RLMObject *object in books) {
+    [array addObject:object];
+  }
+  self.bookmarkArr = array;
+ 
+ 
   //[jeeUtil addObserver:self selector:@selector(onCommand:) message:@""];
   UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
   [flowLayout setItemSize:CGSizeMake(screenWidth -10, 100.0f)];
@@ -118,7 +125,7 @@
 }
 
 #pragma mark - DetailView Delegate
-
+//
 //-(void)addFavoriteArr:(DetailBook *)selectedBook{
 //
 //  if([self.bookmarkArr count] > 0){

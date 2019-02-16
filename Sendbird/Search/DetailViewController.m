@@ -43,7 +43,7 @@
               [self.likeBtn setTitle:@"liked" forState:UIControlStateNormal];
             [self.likeBtn addTarget:self action:@selector(askRemoveFavoriteArr:) forControlEvents: UIControlEventTouchUpInside];
           }
-        
+       
         self.languageLb.text = self.selectedBook.language;
         self.yearLb.text = self.selectedBook.year;
         self.ratingLb.text = self.selectedBook.rating;
@@ -59,7 +59,7 @@
         
         
         NSString *encodeUrl = [self.selectedBook.image stringByRemovingPercentEncoding];
-        
+        [self addHistory];
         [self.imgView sd_setImageWithURL:[NSURL URLWithString:encodeUrl]
                    placeholderImage:nil
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -75,8 +75,32 @@
     }
   }];
 }
--(void)viewWillDisappear:(BOOL)animated{
-//  self.bookmarkArr removeAllObjects
+-(void)addHistory{
+  
+  
+RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"isbn13 = %@", self.selectedBook.isbn13];
+  
+  NSMutableArray *array = [NSMutableArray new];
+  for (RLMObject *object in books) {
+    [array addObject:object];
+  }
+  if([array count] >0){
+    
+  }else{
+    RMdetailBook *newBook =  [RMdetailBook objectWithDetailBook:self.selectedBook withComment:@""];
+    // Get the default Realm
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    // Add to Realm with transaction
+    [realm beginWriteTransaction];
+    [realm addObject:newBook];
+    [realm commitWriteTransaction];
+  }
+
+  
+
+                                   
+                                   
+
 }
 - (void)fetchBookDetail:(NSString*)urlString withISBN:(NSString*)ISBN callback:(void (^)(NSError *error, BOOL success))callback
 {
@@ -126,27 +150,24 @@
 
 - (void)askAddFavoriteArr:(id)sender
 {
-
-  //if ([self.delegate respondsToSelector:@selector(addFavoriteArr:withObject:)]) {
-//    self.selectedBook.like = YES;
-//  if ([[Preference Instance].favoriteArr count] > 0){
+//  RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"isbn13 = %@", self.selectedBook.isbn13];
 //
-//    self.bookmarkArr  = [Preference Instance].favoriteArr;
-//    [self.bookmarkArr addObject:self.selectedBook];
-//      [Preference Instance].favoriteArr = self.bookmarkArr ;
-//  }else{
-//      [self.bookmarkArr addObject:self.selectedBook];
-//   // [Preference Instance].favoriteArr = [[NSMutableArray alloc]init];
-//    [Preference Instance].favoriteArr = self.bookmarkArr ;
+//  NSMutableArray *array = [NSMutableArray new];
+//  for (RLMObject *object in books) {
+//    [array addObject:object];
 //  }
-//
-//
-//  NSLog(@"%lu", (unsigned long)[[Preference Instance].favoriteArr count]);
-  //  [self.delegate addFavoriteArr:self.selectedBook];
-  
- // }
-  
 
+    RMdetailBook *newBook =  [RMdetailBook objectWithDetailBook:self.selectedBook withComment:@""];
+    newBook.like = YES;
+    // Get the default Realm
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    // Add to Realm with transaction
+    [realm beginWriteTransaction];
+    [realm addOrUpdateObject:newBook];
+    [realm commitWriteTransaction];
+ 
+
+ 
 }
 
 - (void)askRemoveFavoriteArr:(id)sender

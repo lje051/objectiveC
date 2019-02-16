@@ -9,7 +9,7 @@
 #import <Realm/Realm.h>
 #import <Foundation/Foundation.h>
 #import "Book.h"
-
+#import "DetailBook.h"
 
 @interface RMdetailBook : RLMObject
 @property (assign, nonatomic) BOOL like;
@@ -29,7 +29,9 @@
 @property (nonatomic, retain) NSString *language;
 @property (nonatomic, retain) NSString *publisher;
 @property (nonatomic, retain) NSString *error;
++ (NSArray *)indexedProperties;
 + (NSString *)primaryKey;
 + (RMdetailBook *)objectWithDetailBook:(DetailBook *)selectedbook withComment:(NSString *)comment;
+
 @end
 

@@ -135,7 +135,7 @@
   
   //  self.ndx = history.APPR_NDX;
   DetailViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
-  vc.delegate = self.navigationController;
+ // vc.delegate = self.navigationController;
   vc.isbn13 = book.isbn13;
   [self.navigationController pushViewController:vc animated:YES];
   

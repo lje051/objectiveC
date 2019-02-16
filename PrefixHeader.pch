@@ -16,7 +16,7 @@ enum __POST_MESSAGE__
   ID_ADD_HISTORYLIST
   
 };
-
+#import "RMdetailBook.h"
 #import "BookmarkViewController.h"
 #import "HistoryViewController.h"
 #import "Preference.h"
