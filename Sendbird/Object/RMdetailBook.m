@@ -14,7 +14,7 @@
 + (RMdetailBook *)objectWithDetailBook:(DetailBook *)selectedbook withComment:(NSString *)comment {
   
     RMdetailBook *rmObj =  [[RMdetailBook alloc] init];
-    rmObj.like = NO;
+    rmObj.bookmark = @"NO";
     rmObj.title    = selectedbook.title;
     rmObj.price    = selectedbook.price;
     rmObj.subtitle    = selectedbook.subtitle;
@@ -40,7 +40,7 @@
   return @"isbn13";
 }
 + (NSArray *)indexedProperties {
-  return @[@"price", @"like", @"authors", @"title"];
+  return @[@"price", @"bookmark", @"authors", @"title"];
 }
 
 

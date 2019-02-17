@@ -36,13 +36,13 @@
         self.pageLb.text = [NSString stringWithFormat:@"%@pages", self.selectedBook.pages];
         
         
-          if(!self.selectedBook.like){
+         // if(!self.selectedBook.like){
             [self.likeBtn setTitle:@"click like" forState:UIControlStateNormal];
             [self.likeBtn addTarget:self action:@selector(askAddFavoriteArr:) forControlEvents: UIControlEventTouchUpInside];
-          }else{
-              [self.likeBtn setTitle:@"liked" forState:UIControlStateNormal];
-            [self.likeBtn addTarget:self action:@selector(askRemoveFavoriteArr:) forControlEvents: UIControlEventTouchUpInside];
-          }
+      //    }else{
+      //        [self.likeBtn setTitle:@"liked" forState:UIControlStateNormal];
+      //      [self.likeBtn addTarget:self action:@selector(askRemoveFavoriteArr:) forControlEvents: UIControlEventTouchUpInside];
+       //   }
        
         self.languageLb.text = self.selectedBook.language;
         self.yearLb.text = self.selectedBook.year;
@@ -158,7 +158,7 @@ RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"isbn13 = %@", s
 //  }
 
     RMdetailBook *newBook =  [RMdetailBook objectWithDetailBook:self.selectedBook withComment:@""];
-    newBook.like = YES;
+    newBook.bookmark = @"YES";
     // Get the default Realm
     RLMRealm *realm = [RLMRealm defaultRealm];
     // Add to Realm with transaction
@@ -174,7 +174,7 @@ RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"isbn13 = %@", s
 {
 //  if ([self.delegate respondsToSelector:@selector(removeFavoriteArr:withObject:)]) {
   RMdetailBook *newBook =  [RMdetailBook objectWithDetailBook:self.selectedBook withComment:@""];
-  newBook.like = NO;
+  newBook.bookmark = @"NO";
   // Get the default Realm
   RLMRealm *realm = [RLMRealm defaultRealm];
   // Add to Realm with transaction

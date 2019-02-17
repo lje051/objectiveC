@@ -42,7 +42,9 @@
   self.bookmarkArr = [[NSMutableArray alloc]init];
   
 //RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"like == %@", [NSNumber numberWithBool:YES]];
-  RLMResults<RMdetailBook *> *books = [[RMdetailBook objectsWhere:@"like == %@", [NSNumber numberWithBool:YES]] sortedResultsUsingKeyPath:@"title" ascending:YES];
+  
+  // RLMResults<RMdetailBook *> *books = [RMdetailBook allObjects];
+  RLMResults<RMdetailBook *> *sortedbooks = [RMdetailBook objectsWhere:@"bookmark = 'YES'"];
  // NSPredicate *newPredicate =
 //[NSPredicate predicateWithFormat:@"like == %@", [NSNumber numberWithBool:YES]];
  
@@ -50,7 +52,7 @@
 
  // RLMResults<RMdetailBook *>  *books = [RMdetailBook objectsWithPredicate:newPredicate];
   NSMutableArray *array = [NSMutableArray new];
-  for (RLMObject *object in books) {
+  for (RLMObject *object in sortedbooks) {
     [array addObject:object];
   }
   self.bookmarkArr = array;
@@ -63,14 +65,38 @@
   [flowLayout setMinimumLineSpacing:1.0f];
   [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
   [self.collectionView setCollectionViewLayout:flowLayout];
+ 
+  self.collectionView.delegate = self;
+  self.collectionView.dataSource = self;
   [self.collectionView reloadData];
-  
   
 }
 
 
 -(void)viewWillAppear:(BOOL)animated{
   self.navigationController.navigationBar.prefersLargeTitles = YES;
+  RLMResults<RMdetailBook *> *sortedbooks = [RMdetailBook objectsWhere:@"bookmark = 'YES'"];
+  // NSPredicate *newPredicate =
+  //[NSPredicate predicateWithFormat:@"like == %@", [NSNumber numberWithBool:YES]];
+  
+  
+  
+  // RLMResults<RMdetailBook *>  *books = [RMdetailBook objectsWithPredicate:newPredicate];
+  NSMutableArray *array = [NSMutableArray new];
+  for (RLMObject *object in sortedbooks) {
+    [array addObject:object];
+  }
+  self.bookmarkArr = array;
+  [self.collectionView reloadData];
+//  
+//  
+//  // RLMResults<RMdetailBook *>  *books = [RMdetailBook objectsWithPredicate:newPredicate];
+//  NSMutableArray *array = [NSMutableArray new];
+//  for (RLMObject *object in books) {
+//    [array addObject:object];
+//  }
+//  self.bookmarkArr = array;
+  
 }
 
 

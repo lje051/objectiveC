@@ -12,7 +12,7 @@
 #import "DetailBook.h"
 
 @interface RMdetailBook : RLMObject
-@property BOOL like;
+@property NSString* bookmark;
 @property  NSString *comment;
 @property  NSString *title;
 @property  NSString *price;
