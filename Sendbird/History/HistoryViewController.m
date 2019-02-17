@@ -7,7 +7,7 @@
 //
 #import "DetailViewController.h"
 #import "HistoryViewController.h"
-
+#import <Realm/Realm.h>
 @interface HistoryViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -59,7 +59,15 @@
   
   
 }
-
+//- (void) onTapEdit:(id)sender
+//{
+//  BOOL isEditMode = [self.tbvBookmarkList isEditing];
+//  [self.tbvBookmarkList setEditing:!isEditMode animated:YES];
+//  
+//  [self.tbvBookmarkList reloadData];
+//  
+//  [self requestBookmarkSeqModify];
+//}
 
 -(void)viewWillAppear:(BOOL)animated{
   self.navigationController.navigationBar.prefersLargeTitles = YES;
@@ -130,4 +138,43 @@
 {
   return 1;
 }
+
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  NSLog(@"PageBookmark::commitEditingStyle");
+  
+  //Delete conversation
+  if(editingStyle == UITableViewCellEditingStyleDelete)
+  {
+    NSLog(@"쎌삭제!!!");
+    
+  
+    RLMRealm *realm = RLMRealm.defaultRealm;
+    [realm beginWriteTransaction];
+    [realm deleteObject:[self.historyArr objectAtIndex:indexPath.row]];
+    [realm commitWriteTransaction];
+    
+    
+    
+    //Deletes the row from the tableView.
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+  }
+}
+
+- (NSIndexPath *) tableView: (UITableView *) tableView targetIndexPathForMoveFromRowAtIndexPath: (NSIndexPath *) sourceIndexPath toProposedIndexPath: (NSIndexPath *) proposedDestinationIndexPath {
+  NSLog(@"PageBookmark::targetIndexPathForMoveFromRowAtIndexPath");
+  return proposedDestinationIndexPath;
+}
+
+// Override to support conditional rearranging of the table view.
+- (BOOL) tableView: (UITableView *) tableView canMoveRowAtIndexPath: (NSIndexPath *) indexPath {
+  return YES;
+}
+
 @end

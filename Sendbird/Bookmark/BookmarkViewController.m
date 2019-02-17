@@ -7,7 +7,7 @@
 //
 #import "DetailViewController.h"
 #import "BookmarkViewController.h"
-
+#import <Realm/Realm.h>
 @interface BookmarkViewController ()
 
 @end
@@ -40,8 +40,15 @@
   CGRect screenRect = [[UIScreen mainScreen] bounds];
   CGFloat screenWidth = screenRect.size.width;
   self.bookmarkArr = [[NSMutableArray alloc]init];
-  //string으로 만들자 짜증나니까 .
-  RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"like = True"];
+  
+//RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"like == %@", [NSNumber numberWithBool:YES]];
+  RLMResults<RMdetailBook *> *books = [[RMdetailBook objectsWhere:@"like == %@", [NSNumber numberWithBool:YES]] sortedResultsUsingKeyPath:@"title" ascending:YES];
+ // NSPredicate *newPredicate =
+//[NSPredicate predicateWithFormat:@"like == %@", [NSNumber numberWithBool:YES]];
+ 
+
+
+ // RLMResults<RMdetailBook *>  *books = [RMdetailBook objectsWithPredicate:newPredicate];
   NSMutableArray *array = [NSMutableArray new];
   for (RLMObject *object in books) {
     [array addObject:object];

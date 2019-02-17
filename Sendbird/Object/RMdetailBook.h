@@ -12,23 +12,23 @@
 #import "DetailBook.h"
 
 @interface RMdetailBook : RLMObject
-@property (assign, nonatomic) BOOL like;
-@property (nonatomic, retain) NSString *comment;
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *price;
-@property (nonatomic, retain) NSString *subtitle;
-@property (nonatomic, retain) NSString *image;
-@property (nonatomic, retain) NSString *url;
-@property (nonatomic, retain) NSString *isbn13;
-@property (nonatomic, retain) NSString *authors;
-@property (nonatomic, retain) NSString *isbn10;
-@property (nonatomic, retain) NSString *pages;
-@property (nonatomic, retain) NSString *year;
-@property (nonatomic, retain) NSString *rating;
-@property (nonatomic, retain) NSString *desc;
-@property (nonatomic, retain) NSString *language;
-@property (nonatomic, retain) NSString *publisher;
-@property (nonatomic, retain) NSString *error;
+@property BOOL like;
+@property  NSString *comment;
+@property  NSString *title;
+@property  NSString *price;
+@property  NSString *subtitle;
+@property  NSString *image;
+@property  NSString *url;
+@property  NSString *isbn13;
+@property  NSString *authors;
+@property  NSString *isbn10;
+@property  NSString *pages;
+@property  NSString *year;
+@property  NSString *rating;
+@property  NSString *desc;
+@property  NSString *language;
+@property  NSString *publisher;
+@property  NSString *error;
 + (NSArray *)indexedProperties;
 + (NSString *)primaryKey;
 + (RMdetailBook *)objectWithDetailBook:(DetailBook *)selectedbook withComment:(NSString *)comment;

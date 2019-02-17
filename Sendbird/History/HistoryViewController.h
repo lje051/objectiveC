@@ -10,7 +10,7 @@
 #import "DetailBook.h"
 #import <UIKit/UIKit.h>
 #import "DetailViewController.h"
-
+#import <Realm/Realm.h>
 
 @interface HistoryViewController : UIViewController
 

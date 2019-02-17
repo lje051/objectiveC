@@ -173,9 +173,14 @@ RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"isbn13 = %@", s
 - (void)askRemoveFavoriteArr:(id)sender
 {
 //  if ([self.delegate respondsToSelector:@selector(removeFavoriteArr:withObject:)]) {
-    self.selectedBook.like = NO;
-  [[Preference Instance].favoriteArr removeObject:self.selectedBook];
-  NSLog(@"%@", [Preference Instance].favoriteArr);
+  RMdetailBook *newBook =  [RMdetailBook objectWithDetailBook:self.selectedBook withComment:@""];
+  newBook.like = NO;
+  // Get the default Realm
+  RLMRealm *realm = [RLMRealm defaultRealm];
+  // Add to Realm with transaction
+  [realm beginWriteTransaction];
+  [realm addOrUpdateObject:newBook];
+  [realm commitWriteTransaction];
     
  // }
   

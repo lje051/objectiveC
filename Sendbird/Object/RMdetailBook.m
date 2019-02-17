@@ -5,7 +5,7 @@
 //  Created by Jeeeun Lim on 16/02/2019.
 //  Copyright © 2019 jeeeun. All rights reserved.
 //
-
+#import <Realm/Realm.h>
 #import "RMdetailBook.h"
 
 @implementation RMdetailBook
@@ -40,7 +40,7 @@
   return @"isbn13";
 }
 + (NSArray *)indexedProperties {
-  return @[@"like"];
+  return @[@"price", @"like", @"authors", @"title"];
 }
 
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DetailViewController.h"
-
+#import <Realm/Realm.h>
 @interface BookmarkViewController : UIViewController<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) NSMutableArray* bookmarkArr;
