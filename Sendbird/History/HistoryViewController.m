@@ -8,8 +8,8 @@
 #import "DetailViewController.h"
 #import "HistoryViewController.h"
 #import <Realm/Realm.h>
-@interface HistoryViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@interface HistoryViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -39,109 +39,113 @@
   CGFloat screenWidth = screenRect.size.width;
   
   self.historyArr = [[NSMutableArray alloc]init];
-  RLMResults<RMdetailBook *> *books = [RMdetailBook allObjects];
+  RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"history = 'YES'"];
   
   NSMutableArray *array = [NSMutableArray new];
   for (RLMObject *object in books) {
     [array addObject:object];
   }
   self.historyArr = array;
-  self.collectionView.delegate = self;
-  self.collectionView.dataSource = self;
-  UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-  [flowLayout setItemSize:CGSizeMake(screenWidth -10, 100.0f)];
-  [flowLayout setMinimumInteritemSpacing:1.0f];
-  [flowLayout setMinimumLineSpacing:1.0f];
-  [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-  [self.collectionView setCollectionViewLayout:flowLayout];
-  
-  [self.collectionView reloadData];
+  self.tableView.delegate = self;
+  self.tableView.dataSource = self;
+ 
+  [self.tableView reloadData];
   
   
 }
+- (IBAction)onTapEdit:(UIBarButtonItem *)sender {
+    BOOL isEditMode = [self.tableView isEditing];
+    [self.tableView setEditing:!isEditMode animated:YES];
+  
+    [self.tableView reloadData];
+  
+   // [self requestBookmarkSeqModify];
+}
+
+
 //- (void) onTapEdit:(id)sender
 //{
-//  BOOL isEditMode = [self.tbvBookmarkList isEditing];
-//  [self.tbvBookmarkList setEditing:!isEditMode animated:YES];
-//  
-//  [self.tbvBookmarkList reloadData];
-//  
-//  [self requestBookmarkSeqModify];
+
 //}
 
 -(void)viewWillAppear:(BOOL)animated{
   self.navigationController.navigationBar.prefersLargeTitles = YES;
-  RLMResults<RMdetailBook *> *books = [RMdetailBook allObjects];
+   RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"history = 'YES'"];
   
   NSMutableArray *array = [NSMutableArray new];
   for (RLMObject *object in books) {
     [array addObject:object];
   }
   self.historyArr = array;
-  [self.collectionView reloadData];
+  [self.tableView reloadData];
 }
 
 
+#pragma mark - UITableView DataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  
+  return  [self.historyArr count];
+  
+}
 
-#pragma mark - UICollectionView DataSource
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  UITableViewCell *cell = nil;
   
-  return [self.historyArr count];
-  
-}
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-  // Book * book = [self.bookArr objectAtIndex:indexPath.row];
-  RMdetailBook *book = [self.historyArr objectAtIndex:indexPath.row];
-  
-  //  self.ndx = history.APPR_NDX;
-  DetailViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
-  vc.isbn13 = book.isbn13;
-  [self.navigationController pushViewController:vc animated:YES];
-  
-  
-  
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-  
-  UICollectionViewCell *cell =(UICollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"myCellData1" forIndexPath:indexPath];
-  RMdetailBook * book = [self.historyArr objectAtIndex:indexPath.row];
-  UIImageView *imgView = (UIImageView *)[cell viewWithTag:100];
-  UILabel *titleLb = (UILabel *)[cell viewWithTag:200];
-  UILabel *subtitleLb = (UILabel *)[cell viewWithTag:300];
-  UILabel *isbn13Lb = (UILabel *)[cell viewWithTag:400];
-  UILabel *priceLb = (UILabel *)[cell viewWithTag:500];
-  
-  titleLb.text = book.title;
-  subtitleLb.text = book.subtitle;
-  isbn13Lb.text = book.isbn13;
-  priceLb.text = book.price;
-  
-  NSString *encodeUrl = [book.image stringByRemovingPercentEncoding];
-  
-  [imgView sd_setImageWithURL:[NSURL URLWithString:encodeUrl]
-             placeholderImage:nil
-                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                      if (error) {
-                        NSLog(@"Error occured : %@", [error description]);
-                      }
-                    }];
+    cell = [tableView dequeueReusableCellWithIdentifier:@"myCellData1"];
+    if (nil ==cell) {
+      cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                    reuseIdentifier:@"myCellData1"];
+      
+    }
+    Book * book = [self.historyArr objectAtIndex:indexPath.row];
+    UIImageView *imgView = (UIImageView *)[cell viewWithTag:100];
+    UILabel *titleLb = (UILabel *)[cell viewWithTag:200];
+    UILabel *subtitleLb = (UILabel *)[cell viewWithTag:300];
+    UILabel *isbn13Lb = (UILabel *)[cell viewWithTag:400];
+    UILabel *priceLb = (UILabel *)[cell viewWithTag:500];
+    
+    titleLb.text = book.title;
+    subtitleLb.text = book.subtitle;
+    isbn13Lb.text = book.isbn13;
+    priceLb.text = book.price;
+    
+    NSString *encodeUrl = [book.image stringByRemovingPercentEncoding];
+    
+    [imgView sd_setImageWithURL:[NSURL URLWithString:encodeUrl]
+               placeholderImage:nil
+                      completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                        if (error) {
+                          NSLog(@"Error occured : %@", [error description]);
+                        }
+                      }];
+ 
   
   return cell;
-  
-  
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   return 1;
 }
 
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  Book *selectedBook = [self.historyArr objectAtIndex:indexPath.row];
+  DetailViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+  vc.isbn13 = selectedBook.isbn13;
+  [self.navigationController pushViewController:vc animated:YES];
+  
+}
+
+
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
   return UITableViewCellEditingStyleDelete;
 }
 
@@ -154,19 +158,34 @@
   {
     NSLog(@"쎌삭제!!!");
     
-  
-    RLMRealm *realm = RLMRealm.defaultRealm;
+    
+   
+    RMdetailBook *newBook =  [self.historyArr objectAtIndex:indexPath.row];
+   //  RMdetailBook *newBookwithRm =  [RMdetailBook objectWithDetailBook:newBook withComment:@""];
+    
+    //newBookwithRm.history = @"NO";
+    // Get the default Realm
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    RMdetailBook *book = [[RMdetailBook objectsWhere:@"isbn13 = %@", newBook.isbn13] firstObject];
+
     [realm beginWriteTransaction];
-    [realm deleteObject:[self.historyArr objectAtIndex:indexPath.row]];
+    book.history = @"NO";
+   [realm addOrUpdateObject:book];
+    // the book's `title` property will remain unchanged.
     [realm commitWriteTransaction];
     
-    
+    [self.historyArr removeObjectAtIndex:indexPath.row];
+      [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     
     //Deletes the row from the tableView.
-    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+  
   }
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
+  
+  return 135;
+}
 - (NSIndexPath *) tableView: (UITableView *) tableView targetIndexPathForMoveFromRowAtIndexPath: (NSIndexPath *) sourceIndexPath toProposedIndexPath: (NSIndexPath *) proposedDestinationIndexPath {
   NSLog(@"PageBookmark::targetIndexPathForMoveFromRowAtIndexPath");
   return proposedDestinationIndexPath;

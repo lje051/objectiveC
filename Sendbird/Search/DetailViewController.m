@@ -34,15 +34,17 @@
          self.authorLb.text = self.selectedBook.authors;
          self.publisherLb.text = self.selectedBook.publisher;
         self.pageLb.text = [NSString stringWithFormat:@"%@pages", self.selectedBook.pages];
-        
-        
-         // if(!self.selectedBook.like){
-            [self.likeBtn setTitle:@"click like" forState:UIControlStateNormal];
-            [self.likeBtn addTarget:self action:@selector(askAddFavoriteArr:) forControlEvents: UIControlEventTouchUpInside];
-      //    }else{
-      //        [self.likeBtn setTitle:@"liked" forState:UIControlStateNormal];
-      //      [self.likeBtn addTarget:self action:@selector(askRemoveFavoriteArr:) forControlEvents: UIControlEventTouchUpInside];
-       //   }
+     
+        RMdetailBook *book = [[RMdetailBook objectsWhere:@"isbn13 = %@", self.selectedBook.isbn13] firstObject];
+        if ([book.bookmark isEqualToString:@"YES"]){
+          [self.likeBtn setTitle:@"liked" forState:UIControlStateNormal];
+          [self.likeBtn addTarget:self action:@selector(askRemoveFavoriteArr:) forControlEvents: UIControlEventTouchUpInside];
+        }else{
+      
+          [self.likeBtn setTitle:@"click like" forState:UIControlStateNormal];
+          [self.likeBtn addTarget:self action:@selector(askAddFavoriteArr:) forControlEvents: UIControlEventTouchUpInside];
+        }
+     
        
         self.languageLb.text = self.selectedBook.language;
         self.yearLb.text = self.selectedBook.year;
@@ -52,7 +54,10 @@
 //        NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:self.selectedBook.url];
 //        [attributedString addAttribute: NSLinkAttributeName value:self.selectedBook.url range: NSMakeRange(0, str.length)];
 //        textView.attributedText = attributedString;
-        self.urlLb.text = self.selectedBook.url;
+       // self.urlLb.text = self.selectedBook.url;
+        NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:self.selectedBook.url];
+        [attributedString addAttribute: NSLinkAttributeName value: self.selectedBook.url range: NSMakeRange(0, self.selectedBook.url.length)];
+        self.urlTv.attributedText = attributedString;
        //  [self.urlLb setTextColor:[UIColor blueColor]];
         //TODO: make hyperlink
     //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:file.URL_ADDRESS]];
@@ -165,8 +170,10 @@ RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"isbn13 = %@", s
     [realm beginWriteTransaction];
     [realm addOrUpdateObject:newBook];
     [realm commitWriteTransaction];
+  
+  [self.likeBtn setTitle:@"liked" forState:UIControlStateNormal];
+  [self.likeBtn addTarget:self action:@selector(askRemoveFavoriteArr:) forControlEvents: UIControlEventTouchUpInside];
  
-
  
 }
 
@@ -182,7 +189,8 @@ RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"isbn13 = %@", s
   [realm addOrUpdateObject:newBook];
   [realm commitWriteTransaction];
     
- // }
+  [self.likeBtn setTitle:@"click like" forState:UIControlStateNormal];
+  [self.likeBtn addTarget:self action:@selector(askAddFavoriteArr:) forControlEvents: UIControlEventTouchUpInside];
   
   
 }

@@ -35,7 +35,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *yearLb;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLb;
 @property (weak, nonatomic) IBOutlet UILabel *isbn10Lb;
-@property (weak, nonatomic) IBOutlet UILabel *urlLb;
+@property (weak, nonatomic) IBOutlet UITextView *urlTv;
+
 @property (nonatomic, assign) id<DetailViewDelegate> delegate;
 
 @end

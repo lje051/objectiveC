@@ -15,6 +15,7 @@
   
     RMdetailBook *rmObj =  [[RMdetailBook alloc] init];
     rmObj.bookmark = @"NO";
+    rmObj.history = @"YES";
     rmObj.title    = selectedbook.title;
     rmObj.price    = selectedbook.price;
     rmObj.subtitle    = selectedbook.subtitle;
@@ -40,7 +41,7 @@
   return @"isbn13";
 }
 + (NSArray *)indexedProperties {
-  return @[@"price", @"bookmark", @"authors", @"title"];
+  return @[@"price", @"bookmark", @"authors", @"title", @"history"];
 }
 
 

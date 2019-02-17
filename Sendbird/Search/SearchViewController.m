@@ -241,7 +241,7 @@
   if (indexPath.row == [self.searchResultArr count]) {
     result = 25;
   }else{
-    result = 120;
+    result = 135;
   }
   return result;
 }

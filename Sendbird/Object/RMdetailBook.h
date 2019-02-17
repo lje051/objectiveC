@@ -13,6 +13,7 @@
 
 @interface RMdetailBook : RLMObject
 @property NSString* bookmark;
+@property NSString* history;
 @property  NSString *comment;
 @property  NSString *title;
 @property  NSString *price;
