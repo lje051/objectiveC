@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E47E8CC2219679500B6F722 /* MemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E8CA2219679500B6F722 /* MemoView.m */; };
+		4E47E8CD2219679500B6F722 /* MemoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E47E8CB2219679500B6F722 /* MemoView.xib */; };
 		4E6F133F22156B8300DB2929 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E6F133E22156B8200DB2929 /* noimage.png */; };
-		4E6F13432215858100DB2929 /* Preference.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F13422215858100DB2929 /* Preference.m */; };
 		4E6F1347221586A000DB2929 /* jeeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F1346221586A000DB2929 /* jeeUtil.m */; };
 		4E7AC6042217A6B2009C05CA /* RMdetailBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7AC6032217A6B2009C05CA /* RMdetailBook.m */; };
 		4E93B76B22154DA20003ADAC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E93B76A22154DA20003ADAC /* DetailViewController.m */; };
@@ -30,9 +31,10 @@
 /* Begin PBXFileReference section */
 		4B346E71F9EF3FB5708F06C4 /* libPods-Sendbird.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sendbird.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E32B266221674F800524400 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		4E47E8C92219679500B6F722 /* MemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoView.h; sourceTree = "<group>"; };
+		4E47E8CA2219679500B6F722 /* MemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoView.m; sourceTree = "<group>"; };
+		4E47E8CB2219679500B6F722 /* MemoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemoView.xib; sourceTree = "<group>"; };
 		4E6F133E22156B8200DB2929 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
-		4E6F13412215858100DB2929 /* Preference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Preference.h; sourceTree = "<group>"; };
-		4E6F13422215858100DB2929 /* Preference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Preference.m; sourceTree = "<group>"; };
 		4E6F1345221586A000DB2929 /* jeeUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jeeUtil.h; sourceTree = "<group>"; };
 		4E6F1346221586A000DB2929 /* jeeUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jeeUtil.m; sourceTree = "<group>"; };
 		4E7AC6022217A6B2009C05CA /* RMdetailBook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMdetailBook.h; sourceTree = "<group>"; };
@@ -86,6 +88,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4E47E8C722195EA500B6F722 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				4E93B76922154DA20003ADAC /* DetailViewController.h */,
+				4E93B76A22154DA20003ADAC /* DetailViewController.m */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		4E47E8C82219679500B6F722 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				4E47E8C92219679500B6F722 /* MemoView.h */,
+				4E47E8CA2219679500B6F722 /* MemoView.m */,
+				4E47E8CB2219679500B6F722 /* MemoView.xib */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
 		4E6F133D22156B8200DB2929 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +146,8 @@
 		4EC97395221246BC004CEF50 /* Sendbird */ = {
 			isa = PBXGroup;
 			children = (
+				4E47E8C82219679500B6F722 /* AlertView */,
+				4E47E8C722195EA500B6F722 /* Detail */,
 				4E6F13442215868400DB2929 /* Common */,
 				4E6F133D22156B8200DB2929 /* Resource */,
 				4EC973BF2212D304004CEF50 /* New */,
@@ -161,8 +184,6 @@
 				4EA4931722140F87004ACBBE /* Book.m */,
 				4E93B76C22154E040003ADAC /* DetailBook.h */,
 				4E93B76D22154E040003ADAC /* DetailBook.m */,
-				4E6F13412215858100DB2929 /* Preference.h */,
-				4E6F13422215858100DB2929 /* Preference.m */,
 				4E7AC6022217A6B2009C05CA /* RMdetailBook.h */,
 				4E7AC6032217A6B2009C05CA /* RMdetailBook.m */,
 			);
@@ -174,8 +195,6 @@
 			children = (
 				4EC973B52212D1F1004CEF50 /* SearchViewController.h */,
 				4EC973B62212D1F1004CEF50 /* SearchViewController.m */,
-				4E93B76922154DA20003ADAC /* DetailViewController.h */,
-				4E93B76A22154DA20003ADAC /* DetailViewController.m */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -267,6 +286,7 @@
 				4EC973A3221246BE004CEF50 /* LaunchScreen.storyboard in Resources */,
 				4EC973A0221246BE004CEF50 /* Assets.xcassets in Resources */,
 				4E6F133F22156B8300DB2929 /* noimage.png in Resources */,
+				4E47E8CD2219679500B6F722 /* MemoView.xib in Resources */,
 				4EC9739E221246BC004CEF50 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,10 +319,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E6F13432215858100DB2929 /* Preference.m in Sources */,
 				4EC973B12212D184004CEF50 /* BookmarkViewController.m in Sources */,
 				4E6F1347221586A000DB2929 /* jeeUtil.m in Sources */,
 				4EC973A6221246BE004CEF50 /* main.m in Sources */,
+				4E47E8CC2219679500B6F722 /* MemoView.m in Sources */,
 				4EC973B42212D1C7004CEF50 /* NewViewController.m in Sources */,
 				4E93B76E22154E040003ADAC /* DetailBook.m in Sources */,
 				4E7AC6042217A6B2009C05CA /* RMdetailBook.m in Sources */,
@@ -454,8 +474,8 @@
 			baseConfigurationReference = C72FDA2308CD4BEEC8B61CF8 /* Pods-Sendbird.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HSA7DFUXTK;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
@@ -464,8 +484,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aspnc.Sendbird;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeeeun.Sendbird;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -475,8 +496,8 @@
 			baseConfigurationReference = D1BEB1F91427AB508A3FE83F /* Pods-Sendbird.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HSA7DFUXTK;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
@@ -485,8 +506,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aspnc.Sendbird;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeeeun.Sendbird;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

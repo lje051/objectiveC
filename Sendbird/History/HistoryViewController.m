@@ -15,29 +15,8 @@
 
 @implementation HistoryViewController
 
-- (void)onCommand:(NSNotification *)notif
-{
-  UInt16 msgtype = [[[notif userInfo] objectForKey:@"msgID"] intValue];
-  switch(msgtype)
-  {
-    case ID_ADD_HISTORYLIST:
-    {
-     // [self reloadHistoryArr];
-      break;
-    }
-    default:
-    {
-      NSLog(@"PageProfile::onCommand() - msgtype:%d", msgtype);
-      break;
-    }
-  }
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // self.delegate = self;
-  CGRect screenRect = [[UIScreen mainScreen] bounds];
-  CGFloat screenWidth = screenRect.size.width;
-  
   self.historyArr = [[NSMutableArray alloc]init];
   RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"history = 'YES'"];
   
@@ -61,12 +40,6 @@
   
    // [self requestBookmarkSeqModify];
 }
-
-
-//- (void) onTapEdit:(id)sender
-//{
-
-//}
 
 -(void)viewWillAppear:(BOOL)animated{
   self.navigationController.navigationBar.prefersLargeTitles = YES;
@@ -130,9 +103,6 @@
 }
 
 
-
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -142,7 +112,6 @@
   [self.navigationController pushViewController:vc animated:YES];
   
 }
-
 
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -156,15 +125,8 @@
   //Delete conversation
   if(editingStyle == UITableViewCellEditingStyleDelete)
   {
-    NSLog(@"쎌삭제!!!");
     
-    
-   
     RMdetailBook *newBook =  [self.historyArr objectAtIndex:indexPath.row];
-   //  RMdetailBook *newBookwithRm =  [RMdetailBook objectWithDetailBook:newBook withComment:@""];
-    
-    //newBookwithRm.history = @"NO";
-    // Get the default Realm
     RLMRealm *realm = [RLMRealm defaultRealm];
     RMdetailBook *book = [[RMdetailBook objectsWhere:@"isbn13 = %@", newBook.isbn13] firstObject];
 

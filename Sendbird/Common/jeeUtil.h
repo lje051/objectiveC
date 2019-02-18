@@ -24,6 +24,7 @@
 + (void)postMessage:(id)sender message:(NSString *)msgName msgID:(UInt16)msgID;
 + (void)postMessage:(id)sender message:(NSString *)msgName msgID:(UInt16)msgID param1:(id)param1;
 + (void)postMessage:(id)sender message:(NSString *)msgName msgID:(UInt16)msgID param1:(id)param1 param2:(id)param2;
++ (BOOL)  isNullOrEmpty:(NSString*)aStr;
 @end
 
 

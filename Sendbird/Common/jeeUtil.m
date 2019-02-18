@@ -125,6 +125,15 @@
   }
 }
 
-
++ (BOOL) isNullOrEmpty:(NSString*)aStr {
+  if(nil == aStr) {
+    return YES;
+  }
+  if ([@"" isEqualToString:aStr]) {
+    return YES;
+  }
+  
+  return NO;
+}
 
 @end

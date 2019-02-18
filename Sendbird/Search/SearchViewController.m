@@ -28,7 +28,6 @@
   [super viewDidLoad];
   [self.navigationController setNavigationBarHidden:NO];
   self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAutomatic;
-  CGRect screenRect = [[UIScreen mainScreen] bounds];
   self.searchResultArr = [[NSMutableArray alloc]init];
   
   self.bookSearchbar.delegate = self;
@@ -67,14 +66,6 @@
   [request setHTTPMethod:@"GET"];
   [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
   [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-  //   [request setValue:[NSString stringWithFormat:@"%d",[jsonData length]] forHTTPHeaderField:@"Content-length"];
-  
-  //  NSMutableDictionary *userDictionary = [[NSMutableDictionary alloc] init];
-  //  [marksDict setObject:"keyword" forKey:""];
-  //  NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDictionary options:NSJSONWritingPrettyPrinted error: &error];
-  //  [request setHTTPBody:jsonData];//set data
-  
-  
   
   NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
   [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -95,7 +86,7 @@
     
     
     
-      if (error == nil) {
+    if (error == nil) {
       if([NSNull null] != [jsonDict objectForKey:@"books"])
       {
         tempolaryArr =[jsonDict objectForKey:@"books"];
@@ -184,7 +175,7 @@
     [self loadPhotos:++self.currentPage withUrl:@"https://api.itbook.store/1.0/search" withKeyword:self.bookSearchbar.text];
   }
 }
-// 영업지역 리스트 출력
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   UITableViewCell *cell = nil;
@@ -279,11 +270,9 @@
 }
 
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-   [self.searchResultArr removeAllObjects];
+  [self.searchResultArr removeAllObjects];
   [searchBar resignFirstResponder];
 }
 
--(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
- 
-}
+
 @end

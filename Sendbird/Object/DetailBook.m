@@ -20,6 +20,7 @@
 
 - (void)dealloc
 {
+  self.comment = nil;
   self.bookmark = nil;
   self.authors     = nil;
   self.isbn10     = nil;
@@ -50,6 +51,7 @@
   self = [super init];
   if(self) {
     self.bookmark = @"NO";
+    self.comment = @"";
     self.title    = [dict objectForKey:@"title"];
     self.price    = [dict objectForKey:@"price"];
     self.subtitle    = [dict objectForKey:@"subtitle"];

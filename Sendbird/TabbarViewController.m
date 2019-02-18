@@ -7,39 +7,15 @@
 //
 
 #import "TabbarViewController.h"
-#import "Preference.h"
 @interface TabbarViewController ()
 
 @end
 
 @implementation TabbarViewController
-- (void)onCommand:(NSNotification *)notif
-{
-  UInt16 msgtype = [[[notif userInfo] objectForKey:@"msgID"] intValue];
-  switch(msgtype)
-  {
-    case ID_ADD_FAVLIST:
-    {
-      //[self getMyTodoList];
-      break;
-    }
-    case ID_REMOVE_FAVLIST:
-    {
-      //[self getMyTodoList];
-      break;
-    }
-    default:
-    {
-      NSLog(@"PageProfile::onCommand() - msgtype:%d", msgtype);
-      break;
-    }
-  }
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-     // [jeeUtil addObserver:self selector:@selector(onCommand:) message:@""];
-    // Do any additional setup after loading the view.
 }
 
 
@@ -54,15 +30,6 @@
   NSLog(@"%@", items);
 }
 
-//-(void)addFavoriteArr:(DetailBook *)selectedBook{
-//  NSArray *viewControllers = [self.tabBarController viewControllers];
-//  BookmarkViewController *listView = (BookmarkViewController *)viewControllers[1];
-// 
-//
-//
-//
-//}
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -70,6 +37,6 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

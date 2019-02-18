@@ -11,7 +11,8 @@
 
 
 @interface DetailBook : NSObject
-@property (assign, nonatomic) NSString* bookmark;
+@property (assign, nonatomic) NSString* comment;
+@property (retain, nonatomic) NSString* bookmark;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *price;
 @property (nonatomic, retain) NSString *subtitle;

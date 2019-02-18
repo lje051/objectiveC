@@ -13,41 +13,12 @@
 @end
 
 @implementation BookmarkViewController
-- (void)onCommand:(NSNotification *)notif
-{
-  UInt16 msgtype = [[[notif userInfo] objectForKey:@"msgID"] intValue];
-  switch(msgtype)
-  {
-    case ID_ADD_FAVLIST:
-    {
-      //[self getMyTodoList];
-      break;
-    }
-    case ID_REMOVE_FAVLIST:
-    {
-      //[self getMyTodoList];
-      break;
-    }
-    default:
-    {
-      NSLog(@"PageProfile::onCommand() - msgtype:%d", msgtype);
-      break;
-    }
-  }
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
   CGRect screenRect = [[UIScreen mainScreen] bounds];
-  CGFloat screenWidth = screenRect.size.width;
   self.bookmarkArr = [[NSMutableArray alloc]init];
-  
-//RLMResults<RMdetailBook *> *books = [RMdetailBook objectsWhere:@"like == %@", [NSNumber numberWithBool:YES]];
-  
-  // RLMResults<RMdetailBook *> *books = [RMdetailBook allObjects];
   RLMResults<RMdetailBook *> *sortedbooks = [RMdetailBook objectsWhere:@"bookmark = 'YES'"];
- // NSPredicate *newPredicate =
-//[NSPredicate predicateWithFormat:@"like == %@", [NSNumber numberWithBool:YES]];
- 
   [self.segmentControl addTarget:self action:@selector(tappedSegmentControl) forControlEvents:UIControlEventValueChanged];
 
  // RLMResults<RMdetailBook *>  *books = [RMdetailBook objectsWithPredicate:newPredicate];
@@ -56,9 +27,6 @@
     [array addObject:object];
   }
   self.bookmarkArr = array;
- 
- 
- 
   self.tableView.delegate = self;
   self.tableView.dataSource = self;
   [self.tableView reloadData];
@@ -68,28 +36,15 @@
 
 -(void)viewWillAppear:(BOOL)animated{
   self.navigationController.navigationBar.prefersLargeTitles = YES;
+  //getting a bookmark data
   RLMResults<RMdetailBook *> *sortedbooks = [RMdetailBook objectsWhere:@"bookmark = 'YES'"];
-  // NSPredicate *newPredicate =
-  //[NSPredicate predicateWithFormat:@"like == %@", [NSNumber numberWithBool:YES]];
-  
-  
-  
-  // RLMResults<RMdetailBook *>  *books = [RMdetailBook objectsWithPredicate:newPredicate];
   NSMutableArray *array = [NSMutableArray new];
   for (RLMObject *object in sortedbooks) {
     [array addObject:object];
   }
   self.bookmarkArr = array;
   [self.tableView reloadData];
-//  
-//  
-//  // RLMResults<RMdetailBook *>  *books = [RMdetailBook objectsWithPredicate:newPredicate];
-//  NSMutableArray *array = [NSMutableArray new];
-//  for (RLMObject *object in books) {
-//    [array addObject:object];
-//  }
-//  self.bookmarkArr = array;
-  
+
 }
 
 - (void)tappedSegmentControl{
@@ -110,12 +65,7 @@
 
 
 -(void)filteredArr:(NSString*)dataString{
-  //  RLMResults<Employee *> *employees = [Employee allObjects];
-  //  NSMutableArray *array = [NSMutableArray array];
-  //  for (Employee *employee in employees) {
-  //    [array addObject:employee];
-  //  }
-  //[self.tableArray removeAllObjects];
+ //sorting data for title, author, price
   if([dataString isEqual: @"Title"]){
     RLMResults<RMdetailBook *> *books = [ [RMdetailBook objectsWhere:@"bookmark = 'YES'"]
                                      sortedResultsUsingKeyPath:@"title" ascending:YES];
@@ -215,8 +165,6 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  
-  
   return 135;
 }
 

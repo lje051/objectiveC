@@ -9,17 +9,10 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
-enum __POST_MESSAGE__
-{
-  ID_ADD_FAVLIST = 0,
-  ID_REMOVE_FAVLIST,
-  ID_ADD_HISTORYLIST
-  
-};
+
 #import "RMdetailBook.h"
 #import "BookmarkViewController.h"
 #import "HistoryViewController.h"
-#import "Preference.h"
 #import "Book.h"
 #import "DetailBook.h"
 #import "jeeUtil.h"
